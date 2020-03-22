@@ -137,9 +137,103 @@
                 // Add more ivr keypress
                 $("#ivr_keypress > h2 > button").on("click", function() {
                     $("#ivr_keypress > div.container").append(`
+                    <div class="row">
+                        <div class="form-group row">
+                            <div class="col-xs-2">
+                                <input class="form-control" id="ex1" type="text">
+                            </div>
+                            <div class="col-xs-4">
+                            </div>
+                            <div class="col-xs-2" style="float: right">
+                                <button type="button" class="btn btn-danger" style="float: right">Xóa kịch bản</button>
+                                <button type="button" class="btn btn-info" style="float: right" data-toggle="collapse" data-target="#kich_ban_1">(+)</button>
+                            </div>
+                        </div>
 
+
+                    <fieldset>
+                        <div class="row">
+                            <input type="radio" name="key_press_0_mode" id="key_press_0_no_press">
+                            <label for="key_press_0_no_press">Không bấm phím</label>
+
+                            <div class="row">
+                                Phát lời chào
+                                <select>
+                                    <option value="0b64856dfacbec399cfef5b9">Không phát lời chào</option>
+                                    <option value="4b46f32cdcc398529f878eac">Bye.wav</option>
+                                    <option value="c9dc42a8254bf3e7ac817a59">Group_1.wav</option>
+                                    <option value="315b2e052d5ebb55d8963354">Group_2.wav</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                Nhóm hoặc nhân viên tiếp nhận <select></select>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <input type="radio" name="key_press_0_mode" value="1" id="key_press_0_key_press">
+                            <label for="key_press_0_key_press">Bam phim</label>
+                            <br/>
+                            Phát lời chào <select></select>
+                            <br/>
+                            <div class="row keypad" style="text-align: center">
+                                <span style="font-style: italic">Bấm thử phím 0 :D</span>
+
+                                <div class="row">
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_1">(1)</button>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_2" onclick="alert('Chưa làm :D')">(2)</button>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_3" onclick="alert('Chưa làm :D')">(3)</button>
+                                </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_4" onclick="alert('Chưa làm :D')">(4)</button>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_5" onclick="alert('Chưa làm :D')">(5)</button>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_6" onclick="alert('Chưa làm :D')">(6)</button>
+                                </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_7" onclick="alert('Chưa làm :D')">(7)</button>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_8" onclick="alert('Chưa làm :D')">(8)</button>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_9" onclick="alert('Chưa làm :D')">(9)</button>
+                                </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-info" onclick="alert('Không bấm được :D')">(*)</button>
+                                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_0">(0)</button>
+                                    <button type="button" class="btn btn-info" onclick="alert('Không bấm được :D')">(#)</button>
+                                </div>
+                            </div>
+
+                            <!-- BEGIN: Kich ban 1 - Phim 0 -->
+                            <div class="row collapse" style="margin-left: 50px" id="kich_ban_1_press_0">
+                                <label for="key_press_0_button_0">Phim 0</label>
+                                <input type="checkbox" id="key_press_0_button_0">
+
+                                <div class="row" style="margin-left: 50px">
+                                    <div class="row">
+                                        Phát lời chào <select></select>
+                                    </div>
+
+                                    <fieldset>
+                                        <div class="row">
+                                            <input type="radio" name="key_press_0_button_0" id="key_press_0_button_0_direct"/>
+                                            <label for="key_press_0_button_0_direct">Nhóm hoặc nhân viên tiếp nhận</label>
+                                            <select></select>
+                                        </div>
+                                        <div class="row">
+                                            <input type="radio" name="key_press_0_button_0" id="key_press_0_button_0_ivr"/>
+                                            <label for="key_press_0_button_0_ivr">Chạy kịch bản</label>
+                                            <select></select>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <!-- END: Kich ban 1 - Phim 0 -->
+                        </div>
+
+                    </fieldset>
+                </div>
             `).ready(function () {
-                        keypressSelector($("#ivr_holiday > div.container > div.row:last-child > select"));
+                        greetingSelector($("#ivr_keypress > div.container > div.row:last-child > select"));
                     });
                 });
             });
@@ -260,108 +354,13 @@
             <button type="button" class="btn btn-success">&plus;</button>
         </h2>
 
-        <div class="container collapse in">
+        <div class="container collapse in"></div>
+    </div>
             <!-- BEGIN: Kich ban 1 -->
 
-            <div class="row">
 
-                <div class="form-group row">
-                    <div class="col-xs-2">
-                        <input class="form-control" id="ex1" type="text">
-                    </div>
-                    <div class="col-xs-4">
-                    </div>
-                    <div class="col-xs-2" style="float: right">
-                        <button type="button" class="btn btn-danger" style="float: right">Xóa kịch bản</button>
-                        <button type="button" class="btn btn-info" style="float: right" data-toggle="collapse" data-target="#kich_ban_1">(+)</button>
-                    </div>
-                </div>
-
-
-                <fieldset>
-                    <div class="row">
-                        <input type="radio" name="key_press_0_mode" id="key_press_0_no_press">
-                        <label for="key_press_0_no_press">Không bấm phím</label>
-
-                        <div class="row">
-                            Phát lời chào
-                            <select>
-                                <option value="0b64856dfacbec399cfef5b9">Không phát lời chào</option>
-                                <option value="4b46f32cdcc398529f878eac">Bye.wav</option>
-                                <option value="c9dc42a8254bf3e7ac817a59">Group_1.wav</option>
-                                <option value="315b2e052d5ebb55d8963354">Group_2.wav</option>
-                            </select>
-                        </div>
-
-                        <div class="row">
-                            Nhóm hoặc nhân viên tiếp nhận <select></select>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <input type="radio" name="key_press_0_mode" value="1" id="key_press_0_key_press">
-                        <label for="key_press_0_key_press">Bam phim</label>
-                        <br/>
-                        Phát lời chào <select></select>
-                        <br/>
-                        <div class="row keypad" style="text-align: center">
-                            <span style="font-style: italic">Bấm thử phím 0 :D</span>
-
-                            <div class="row">
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_1">(1)</button>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_2" onclick="alert('Chưa làm :D')">(2)</button>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_3" onclick="alert('Chưa làm :D')">(3)</button>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_4" onclick="alert('Chưa làm :D')">(4)</button>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_5" onclick="alert('Chưa làm :D')">(5)</button>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_6" onclick="alert('Chưa làm :D')">(6)</button>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_7" onclick="alert('Chưa làm :D')">(7)</button>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_8" onclick="alert('Chưa làm :D')">(8)</button>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_9" onclick="alert('Chưa làm :D')">(9)</button>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-info" onclick="alert('Không bấm được :D')">(*)</button>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_0">(0)</button>
-                                <button type="button" class="btn btn-info" onclick="alert('Không bấm được :D')">(#)</button>
-                            </div>
-                        </div>
-
-                        <!-- BEGIN: Kich ban 1 - Phim 0 -->
-                        <div class="row collapse" style="margin-left: 50px" id="kich_ban_1_press_0">
-                            <label for="key_press_0_button_0">Phim 0</label>
-                            <input type="checkbox" id="key_press_0_button_0">
-
-                            <div class="row" style="margin-left: 50px">
-                                <div class="row">
-                                    Phát lời chào <select></select>
-                                </div>
-
-                                <fieldset>
-                                    <div class="row">
-                                        <input type="radio" name="key_press_0_button_0" id="key_press_0_button_0_direct"/>
-                                        <label for="key_press_0_button_0_direct">Nhóm hoặc nhân viên tiếp nhận</label>
-                                        <select></select>
-                                    </div>
-                                    <div class="row">
-                                        <input type="radio" name="key_press_0_button_0" id="key_press_0_button_0_ivr"/>
-                                        <label for="key_press_0_button_0_ivr">Chạy kịch bản</label>
-                                        <select></select>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <!-- END: Kich ban 1 - Phim 0 -->
-                    </div>
-
-                </fieldset>
-            </div>
             <!-- END: Kich ban 1 -->
-        </div>
-    </div>
+
     <!-- END: Cấu hình phim bam -->
 </div>
 <br/><br/><br/>
