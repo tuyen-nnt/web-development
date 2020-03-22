@@ -1,0 +1,371 @@
+
+<html>
+<head>
+    <title>IVR v2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        #form_ivr_mode_configured > .row, #form_key_press > .row {
+            margin-bottom: 30px;
+        }
+
+        #ivr_weekday > div.row {
+            margin-bottom: 20px;
+        }
+
+        /*.weekday > div.collapse > div.container {
+            display: flex;
+            align-items: center;
+        }*/
+
+        .no_anchor {
+            text-decoration: none !important;
+            color: black !important;
+        }
+
+        .separator {
+            margin-bottom: 5px;
+        }
+
+        .weekday > div.row {
+            margin-bottom: 5px;
+        }
+
+        .weekday {
+            margin-bottom: 10px;
+        }
+
+
+        /*
+         *  https://stackoverflow.com/questions/19775344/bootstrap-3-how-to-create-an-inline-form-with-selects-and-labels
+         */
+        .form-group label {
+            float: left;
+            text-align: left;
+            font-weight: normal;
+        }
+
+        .form-group select {
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+        }
+        /*****************************************/
+
+
+    </style>
+    <script>
+        const LIST_WEEK_DAY = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"];
+        function generateWeekDays() {
+
+            // Generate IVR weekday
+            for (let i = 0; i < LIST_WEEK_DAY.length; i++) {
+                $('#ivr_weekday > div.container').append(`
+                    <!-- BEGIN: Cấu hình tùy chỉnh - ${LIST_WEEK_DAY[i]} -->
+                    <div class="container weekday">
+                        <div class="row">
+                            <button type="button" class="btn btn-info weekday-btn" data-toggle="collapse" data-target="#weekday_${i}">${LIST_WEEK_DAY[i]}</button>
+                            <button type="button" class="btn btn-success weekday-add-time">&plus;</button>
+                        </div>
+
+                        <div class="row collapse form-group" id="weekday_${i}">
+                            <div class="container separator">
+                                <label>Cấu hình mặc định <select class="keypress_selector form-control"></select></label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END: Cấu hình tùy chỉnh - ${LIST_WEEK_DAY[i]} -->
+                `);
+            }
+        }
+
+            $(document).ready(function() {
+
+                generateWeekDays();
+
+                $("form").submit(false);
+
+                keypressSelector($("select.keypress_selector"));
+
+                $(".no_anchor").click(function(e)
+                {
+                    e.preventDefault();
+                });
+
+
+                // Add more time in a weekday
+                $("button.weekday-add-time").on("click", function() {
+                    const weekday_div = $(this).parent().parent();
+                    const append = weekday_div.find("div.collapse").append(`
+                    <div class="container separator form-group">
+                        Từ <input type="time"/>
+                        đến <input type="time"/>
+                        dùng kịch bản <select class="keypress_selector form-control"></select>
+                        <button class="btn btn-danger weekday-delete-time" onclick="$(this).parent().remove()">&times;</button>
+                    </div>
+                `);
+                    append.ready(function () {
+                        keypressSelector(weekday_div.find("div.collapse > div.separator:last > select"))
+                    });
+                });
+
+                // Toggle all weekdays
+                $("#ivr_weekday_toggle_all").on("click", function () {
+                    $("div.weekday > div.collapse").collapse($("div.weekday:first > div.collapse").hasClass("in") ? "hide" : "show");
+                });
+
+
+                // Add more time in a holiday
+                $("#ivr_holiday > h2 > button").on("click", function() {
+                    $("#ivr_holiday > div.container").append(`
+                    <div class="row separator form-group">
+                        Vào ngày <input type="date">
+                        Dùng cấu hình
+                        <select class="keypress_selector form-control"></select>
+                        <button class="btn btn-danger weekday-delete-time" onclick="$(this).parent().remove()">&times;</button>
+                    </div>
+                `).ready(function () {
+                        keypressSelector($("#ivr_holiday > div.container > div.row:last-child > select"));
+                    });
+                });
+
+                // Add more ivr keypress
+                $("#ivr_keypress > h2 > button").on("click", function() {
+                    $("#ivr_keypress > div.container").append(`
+
+            `).ready(function () {
+                        keypressSelector($("#ivr_holiday > div.container > div.row:last-child > select"));
+                    });
+                });
+            });
+
+            function extSelector(element)
+            {
+                element.append('<option value="0b64856dfacbec399cfef5b9">Agent 1</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Agent 2</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Group 1</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Group 2</option>');
+            }
+
+            function greetingSelector(element)
+            {
+                element.append('<option value="0b64856dfacbec399cfef5b9">Không phát lời chào</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Bye.wav</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Group_1.wav</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Group_2.wav</option>');
+            }
+
+            function keypressSelector(element)
+            {
+                element.append('<option value="0b64856dfacbec399cfef5b9">Cấu hình 1</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Cấu hình 2</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Cấu hình 3</option>');
+                element.append('<option value="0b64856dfacbec399cfef5b9">Cấu hình 4</option>');
+            }
+    </script>
+</head>
+<body>
+<div class="container" id="number_02812345678">
+
+    <div class="container" id="number">
+        <div class="row">
+            <div class="col-sm-8">
+                <h1>
+                    <a class="no_anchor" href="#" data-toggle="collapse" data-target="#number_02812345678 > .sub_config">Cấu hình đầu số 02812345678</a>
+                </h1>
+            </div>
+            <div class="col-sm-4">
+                <button onclick="alert('Không chơi sửa html nha :D')" onmouseover="alert('Có lỗi xảy ra :D Bạn chưa thể lưu được :D')">
+                    <img alt="Save hehe" src="baonq5.jpg"/></button>  <-- Bấm vào đây để lưu hehe
+            </div>
+        </div>
+    </div>
+
+    <!-- BEGIN: Cấu hình chung -->
+    <div class="container sub_config collapse in" id="ivr_mode">
+        <h2>
+            <a class="no_anchor" href="#" data-toggle="collapse" data-target="#ivr_mode > div.container">Cấu hình chung</a>
+        </h2>
+
+        <div class="container collapse in">
+
+            <fieldset>
+                <div class="row form-group" style="margin-bottom: 0">
+                    <div class="radio" style="display: flex; align-items: center">
+                        <div class="col-xs-2">
+                            <label><input type="radio">Cấu hình mặc định</label>
+                        </div>
+                        <div class="col-xs-2" style="vertical-align: middle">
+                            <select class="keypress_selector form-control"></select>
+                        </div>
+                        <div class="col-xs-2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group align-items-center">
+                    <div class="radio">
+                        <div class="col-xs-4">
+                            <label><input type="radio">Cấu hình ngày trong tuần và ngày lễ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group align-items-center">
+                    <div class="radio">
+                        <div class="col-xs-4">
+                            <label><input type="radio">Sử dụng điều phối theo giọng nói</label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+    </div>
+    <!-- END: Cấu hình chung -->
+
+
+    <!-- BEGIN: Cấu hình ngày trong tuần -->
+    <div class="container sub_config collapse in" id="ivr_weekday">
+        <h2>
+            <a href="#" class="no_anchor" data-toggle="collapse" data-target="#ivr_weekday > div.container">Cấu hình ngày trong tuần</a>
+            <button class="btn btn-info" id="ivr_weekday_toggle_all">(+)</button>
+        </h2>
+        <div class="container collapse in"></div>
+        <!-- To be added generateWeekDays() -->
+    </div>
+    <!-- END: Cấu hình ngày trong tuần -->
+
+
+    <!-- BEGIN: Cấu hình ngày lễ -->
+    <div class="container sub_config collapse in" id="ivr_holiday">
+        <h2>
+            <a class="no_anchor" href="#" data-toggle="collapse" data-target="#ivr_holiday > div.container">Cấu hình ngày lễ</a>
+            <button type="button" class="btn btn-success">&plus;</button>
+        </h2>
+        <div class="container collapse in"></div>
+    </div>
+    <!-- END: Cấu hình ngày lễ -->
+
+
+    <!-- BEGIN: Cấu hình phim bam -->
+    <div class="container sub_config collapse in" id="ivr_keypress">
+        <h2>
+            <a class="no_anchor" href="#" data-toggle="collapse" data-target="#ivr_keypress > div.container">Cấu hình phím bấm</a>
+            <button type="button" class="btn btn-success">&plus;</button>
+        </h2>
+
+        <div class="container collapse in">
+            <!-- BEGIN: Kich ban 1 -->
+
+            <div class="row">
+
+                <div class="form-group row">
+                    <div class="col-xs-2">
+                        <input class="form-control" id="ex1" type="text">
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
+                    <div class="col-xs-2" style="float: right">
+                        <button type="button" class="btn btn-danger" style="float: right">Xóa kịch bản</button>
+                        <button type="button" class="btn btn-info" style="float: right" data-toggle="collapse" data-target="#kich_ban_1">(+)</button>
+                    </div>
+                </div>
+
+
+                <fieldset>
+                    <div class="row">
+                        <input type="radio" name="key_press_0_mode" id="key_press_0_no_press">
+                        <label for="key_press_0_no_press">Không bấm phím</label>
+
+                        <div class="row">
+                            Phát lời chào
+                            <select>
+                                <option value="0b64856dfacbec399cfef5b9">Không phát lời chào</option>
+                                <option value="4b46f32cdcc398529f878eac">Bye.wav</option>
+                                <option value="c9dc42a8254bf3e7ac817a59">Group_1.wav</option>
+                                <option value="315b2e052d5ebb55d8963354">Group_2.wav</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            Nhóm hoặc nhân viên tiếp nhận <select></select>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <input type="radio" name="key_press_0_mode" value="1" id="key_press_0_key_press">
+                        <label for="key_press_0_key_press">Bam phim</label>
+                        <br/>
+                        Phát lời chào <select></select>
+                        <br/>
+                        <div class="row keypad" style="text-align: center">
+                            <span style="font-style: italic">Bấm thử phím 0 :D</span>
+
+                            <div class="row">
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_1">(1)</button>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_2" onclick="alert('Chưa làm :D')">(2)</button>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_3" onclick="alert('Chưa làm :D')">(3)</button>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_4" onclick="alert('Chưa làm :D')">(4)</button>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_5" onclick="alert('Chưa làm :D')">(5)</button>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_6" onclick="alert('Chưa làm :D')">(6)</button>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_7" onclick="alert('Chưa làm :D')">(7)</button>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_8" onclick="alert('Chưa làm :D')">(8)</button>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_9" onclick="alert('Chưa làm :D')">(9)</button>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-info" onclick="alert('Không bấm được :D')">(*)</button>
+                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kich_ban_1_press_0">(0)</button>
+                                <button type="button" class="btn btn-info" onclick="alert('Không bấm được :D')">(#)</button>
+                            </div>
+                        </div>
+
+                        <!-- BEGIN: Kich ban 1 - Phim 0 -->
+                        <div class="row collapse" style="margin-left: 50px" id="kich_ban_1_press_0">
+                            <label for="key_press_0_button_0">Phim 0</label>
+                            <input type="checkbox" id="key_press_0_button_0">
+
+                            <div class="row" style="margin-left: 50px">
+                                <div class="row">
+                                    Phát lời chào <select></select>
+                                </div>
+
+                                <fieldset>
+                                    <div class="row">
+                                        <input type="radio" name="key_press_0_button_0" id="key_press_0_button_0_direct"/>
+                                        <label for="key_press_0_button_0_direct">Nhóm hoặc nhân viên tiếp nhận</label>
+                                        <select></select>
+                                    </div>
+                                    <div class="row">
+                                        <input type="radio" name="key_press_0_button_0" id="key_press_0_button_0_ivr"/>
+                                        <label for="key_press_0_button_0_ivr">Chạy kịch bản</label>
+                                        <select></select>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- END: Kich ban 1 - Phim 0 -->
+                    </div>
+
+                </fieldset>
+            </div>
+            <!-- END: Kich ban 1 -->
+        </div>
+    </div>
+    <!-- END: Cấu hình phim bam -->
+</div>
+<br/><br/><br/>
+</body>
+
+
+</html>
