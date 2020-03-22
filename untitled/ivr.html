@@ -138,7 +138,7 @@
 
                 $("#ivr_keypress > h2 > button").on("click", function() {
                     $("#ivr_keypress > div.container").append(`
-                    <div class="row">
+                    <div class="row erase">
                         <div class="form-group row">
                             <div class="col-xs-2">
                                 <input class="form-control" id="ex1" type="text">
@@ -147,7 +147,7 @@
                             </div>
                              <div class="row erase">
                                 <div class="col-xs-6" style="float: right">
-                                    <button type="button" class="btn btn-danger" style="float: right" onclick=$("div").remove(".erase")>Xóa kịch bản</button>
+                                    <button type="button" class="btn btn-danger" style="float: right" onclick=$(this).parents().remove(".erase")>Xóa kịch bản</button>
                                     <button type="button" class="btn btn-info" style="float: right" data-toggle="collapse" data-target="#kich_ban_1">(+)</button>
                                 </div>
                              </div>
