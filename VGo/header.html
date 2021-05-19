@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Welcome to VGo </title>
+        <link rel="icon" href="./img/Logo2.ico">
+
+        <!-- Import Boostrap css, js, font awesome here -->
+        <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="./bootstrap4/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="./bootstrap4/css/bootstrap.css">
+        <link href="./css/style.css" rel="stylesheet">
+        <link href="./css/searchbar.css" rel="stylesheet">
+        <link href="./css/loginbox.css" rel="stylesheet">
+        <link href="./js/script.js" rel="stylesheet">
+        <script src="jquery-1.10.2.js"></script>
+
+        <script>
+            $(document).ready(function()
+            {
+                hidepopup();
+                $("#show_login").click(function(){
+                    showpopup();
+                });
+                $("#close_login").click(function(){
+                    hidepopup();
+                });
+            });
+
+            function showpopup()
+            {
+                $("#loginform").fadeIn();
+                $("#loginform").css({"visibility":"visible","display":"block"});
+            }
+
+            function hidepopup()
+            {
+                $("#loginform").fadeOut();
+                $("#loginform").css({"visibility":"hidden","display":"none"});
+            }
+
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <div class="container-fluid row">
+            <div class="col-sm-8">
+                <a class="navbar-branch" href="#">
+                    <img src="./img/logo_bar.png" height="100">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+                <!-- <form class="form-inline" action="/action_page.php">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form> -->
+                <div class="col-sm-4>
+                <div class="event__search__floater">
+                    <div class="search__anchor">
+                      <form id="event-search-form" action="get">
+                            <input type="text" class="search__bar" placeholder="Search Event">
+                        <input class="search__submit" type="submit">
+                        <div class="search__toggler"></div>
+                      </form>
+                    </div>
+                </div>
+
+
+                <select class="selectpicker" data-width="fit" name="country">
+                    <option value="GBP">&#127468;&#127463;   English</option>
+                    <option value="VN">&#127483;&#127475;   Tiếng Việt</option>
+                </select>
+
+
+                <div class="container-fluid login text-center" style="text-align: center;" id = "loginform" >
+                        <div class="row login-box">
+                            <div class="col">
+                            <h4>Social Login Button</h4>
+                            <a href="#" class="social-button" id="facebook-connect"> <span><p style="font-size:20px">Connect with Facebook</p></span></a>
+                            <a href="#" class="social-button" id="google-connect"> <span><p style="font-size:20px">Connect with Google</p></span></a>
+                            <a href="#" class="social-button" id="twitter-connect"> <span><p style="font-size:20px">Connect with Twitter</p></span></a>
+                            <a href="#" class="social-button" id="linkedin-connect"> <span><p style="font-size:20px">Connect with LinkedIn</p></span></a>
+                                <button type="button" class="btn cancel" id="close_login">Close</button>
+                            </div>
+                            </div>
+
+
+                </div>
+               <!--<div data-include="login" id="demo"> </div>*/ -->
+
+            </div>
+
+        </nav>
+
+        <!--Ads-->
+
+
+
+        <div class="chat-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h1>...</h1>
+
+                <label for="msg"><b>....</b></label>
+                <textarea placeholder="Type message.." name="msg" required></textarea>
+
+                <button type="submit" class="btn">....</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+
+    </body>
+
+</html>

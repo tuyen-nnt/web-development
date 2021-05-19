@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="./bootstrap4/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./bootstrap4/css/bootstrap.css">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/searchbar.css" rel="stylesheet">
+    <link href="./css/loginbox.css" rel="stylesheet">
+    <link href="./js/script.js" rel="stylesheet">
+    <script src="jquery-1.10.2.js"></script>
+
+    <script>
+
+        $(function(){
+            var includes = $('[data-include]');
+            jQuery.each(includes, function() {
+                var login = 'views/' + $(this).data('include') + '.html';
+
+        document.getElementById("demo").innerHTML = login;
+            })});
+
+    </script>
+
+</head>
+<body>
+
+<div class="login-box">
+    <h2>Social Login Button</h2>
+    <a href="#" class="social-button" id="facebook-connect"> <span>Connect with Facebook</span></a>
+    <a href="#" class="social-button" id="google-connect"> <span>Connect with Google</span></a>
+    <a href="#" class="social-button" id="twitter-connect"> <span>Connect with Twitter</span></a>
+    <a href="#" class="social-button" id="linkedin-connect"> <span>Connect with LinkedIn</span></a>
+</div>
+
+</body>
+</html>

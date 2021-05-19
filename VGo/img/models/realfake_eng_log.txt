@@ -1,0 +1,51 @@
+python fake.py
+
+2020-07-18 18:06:40.035006: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-07-18 18:06:40.039660: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-18 18:06:40.040018: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: GeForce RTX 2080 Ti computeCapability: 7.5
+coreClock: 1.545GHz coreCount: 68 deviceMemorySize: 10.76GiB deviceMemoryBandwidth: 573.69GiB/s
+2020-07-18 18:06:40.040073: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-18 18:06:40.040328: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 1 with properties: 
+pciBusID: 0000:02:00.0 name: GeForce RTX 2080 Ti computeCapability: 7.5
+coreClock: 1.545GHz coreCount: 68 deviceMemorySize: 10.76GiB deviceMemoryBandwidth: 573.69GiB/s
+2020-07-18 18:06:40.040444: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda/lib64:
+2020-07-18 18:06:40.040500: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcublas.so.10'; dlerror: libcublas.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda/lib64:
+2020-07-18 18:06:40.040549: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda/lib64:
+2020-07-18 18:06:40.040596: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda/lib64:
+2020-07-18 18:06:40.040642: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusolver.so.10'; dlerror: libcusolver.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda/lib64:
+2020-07-18 18:06:40.040687: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcusparse.so.10'; dlerror: libcusparse.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda/lib64:
+2020-07-18 18:06:40.042872: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-18 18:06:40.042895: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1598] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2020-07-18 18:06:40.043097: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-07-18 18:06:40.070322: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 3600000000 Hz
+2020-07-18 18:06:40.070569: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fde84000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-18 18:06:40.070585: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-07-18 18:06:40.071707: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-07-18 18:06:40.071721: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      
+Epoch 1/5
+6/6 [==============================] - 3s 581ms/step - loss: 0.6896 - accuracy: 0.5395
+Epoch 2/5
+6/6 [==============================] - 3s 565ms/step - loss: 0.6376 - accuracy: 0.6436
+Epoch 3/5
+6/6 [==============================] - 3s 572ms/step - loss: 0.6295 - accuracy: 0.6567
+Epoch 4/5
+6/6 [==============================] - 3s 575ms/step - loss: 0.6291 - accuracy: 0.6669
+Epoch 5/5
+6/6 [==============================] - 3s 574ms/step - loss: 0.6215 - accuracy: 0.6732
+13/13 [==============================] - 1s 49ms/step - loss: 0.6337 - accuracy: 0.6780
+Evaluation loss: 0.6336808800697327
+Evaluation acc: 0.6779794692993164
+Confusion Matrix
+[[470 164]
+ [244 389]]
+              precision    recall  f1-score   support
+
+        Real       0.66      0.74      0.70       634
+        Fake       0.70      0.61      0.66       633
+
+    accuracy                           0.68      1267
+   macro avg       0.68      0.68      0.68      1267
+weighted avg       0.68      0.68      0.68      1267
+

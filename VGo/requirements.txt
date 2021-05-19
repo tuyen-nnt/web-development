@@ -1,0 +1,7 @@
+pandas
+pyttsx3
+scikit-learn
+keras
+tensorflow
+matplotlib
+spacy_universal_sentence_encoder

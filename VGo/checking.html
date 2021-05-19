@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="jquery-1.10.2.js"></script>
+		<script> 
+			$(function(){
+			  $("#header").load("header.html"); 
+			  $("#footer").load("footer.html"); 
+			});
+		</script> 
+		<link href="./css/checking.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="header"></div>
+		<!--Remaining section-->
+		<div class="row text-center">
+			<textarea id="accuracy" rows="1" cols="20" readonly>Result:</textarea>
+			<div class="col">
+				<button type="button" id="trust_links">Trusted links</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="container-fluid">
+				<iframe src="https://thanhnien.vn/" name="Content" height="400px" width="100%" title="Content"></iframe>
+			</div>
+		</div>
+		<div id="footer">
+
+		</div>
+	</body>
+</html>
