@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Welcome to VGo </title>
+    <link rel="icon" href="./img/Logo2.ico">
+
+    <!-- Import Boostrap css, js, font awesome here -->
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="./bootstrap4/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./bootstrap4/css/bootstrap.css">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/searchbar.css" rel="stylesheet">
+    <link href="./css/loginbox.css" rel="stylesheet">
+    <link href="./js/script.js" rel="stylesheet">
+    <script src="jquery-1.10.2.js"></script>
+
+    <script>
+        $(function(){
+            var includes = $('[data-include]');
+            jQuery.each(includes, function(){
+                var file = 'views/' + $(this).data('include') + '.html';
+                $(this).load(file);
+            });
+        });
+    </script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-branch" href="#">
+            <img src="./img/logo_bar.png" height="100">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- <form class="form-inline" action="/action_page.php">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form> -->
+        <div class="event__search__floater">
+            <div class="search__anchor">
+                <form id="event-search-form" action="get">
+                    <input type="text" class="search__bar" placeholder="Search Event">
+                    <input class="search__submit" type="submit">
+                    <div class="search__toggler"></div>
+                </form>
+            </div>
+        </div>
+
+        <select class="selectpicker" data-width="fit" name="country">
+            <option value="GBP">&#127468;&#127463;   English</option>
+            <option value="VN">&#127483;&#127475;   Tiếng Việt</option>
+        </select>
+
+
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img src="./img/icons-view-more.png">
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Xác thực thông tin</a>
+                <a href="#">Kiểm tra bài viết</a>
+            </div>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right" onclick="openNav()">
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+
+
+</nav>
+</body>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">Login</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+</div>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+    }
+</script>
+<div data-include="footer"></div>
+</html>

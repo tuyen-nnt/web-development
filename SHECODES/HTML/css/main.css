@@ -1,0 +1,60 @@
+body {
+    color: black;
+    /* thiết lập màu chữ */
+    font-size: 14px;
+    /* thiết lập cỡ chữ */
+}
+
+h1 {
+    color: red;
+    /* thiết lập màu chữ mới cho các phần tử h1 */
+    font-size: 18px;
+    /* thiết lập cỡ chữ mới cho các phần tử h1 */
+}
+
+p {
+    color: blue;
+    /* thiết lập màu chữ mới cho các phần tử p */
+}
+
+.forecast {
+    margin: 0;
+    padding: 15px;
+    background-color: #eee;
+    /* font: 1rem 'Fira Sans', sans-serif; */
+}
+
+.forecast>h1,
+.day-forecast {
+    margin: 10px;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.day-forecast {
+    background: right/contain content-box border-box no-repeat url('/media/examples/rain.svg') white;
+}
+
+.day-forecast>h2,
+.day-forecast>p {
+    margin: 10px;
+    font-size: 16px;
+}
+
+table,
+th,
+tr,
+td {
+    width: 50%;
+    border: 1px solid black;
+}
+
+th {
+    font-size: 24px;
+    height: 50px;
+    background-color: green;
+}
+
+tr:hover {
+    background-color: gray;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chon xac thuc hoac Kiem tra bai viet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "icon" href =
+            "Logo2.ico"
+          type = "image/x-icon">
+    <!-- Import Boostrap css, js, font awesome here -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./bootstrap4/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="./bootstrap4/css/bootstrap.css">
+    <link href="./css/style.css" rel="stylesheet">
+
+<!-- Lat chi can nhung phan nay tro di -->
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
+    </script>
+
+    <!--Han chi cach include data file
+    <script>
+        $(function(){
+            var includes = $('[data-include]');
+            jQuery.each(includes, function(){
+                var file = 'views/' + $(this).data('include') + '.html';
+                $(this).load(file);
+            });
+        });
+    </script>
+
+    <div data-include="abc"> </div>
+-->
+
+</head>
+<body>
+<div id="header"></div>
+
+<!--CHen nav vo day-->
+<div class="container-fluid" style="margin-top:30px">
+    <div class="row text-center">
+        <div class="col-sm-6">
+            <button type="button" class="btn-dark special">
+                <span><img alt="loupe" style="width:30%;height:30%" src="loupe.png"></span>
+            <br>
+            <br>
+                <b>Xác thực thông tin</b>
+            </button>
+        </div>
+
+        <div class="col-sm-6">
+            <button type="button" class="btn-info special">
+                <span><img style="width:30%;height:30%" src="contract.png"></span>
+                <br><br>
+                <b>Kiểm tra bài viết</b>
+            </button>
+        </div>
+    </div>
+
+    <div class="row"> <br>
+    </div>
+
+    <div class="row text-center">
+        <div class="col">
+            <a href="#" style="color:purple"><i><u>Already a user?</u></i></a>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col">
+         <button type="button" class="btn-info">LOGIN</button>
+        </div>
+    </div>
+    <!--
+    <div class="row text-center">
+
+        <h5>Already a user?</h5>
+        <br>
+        <button type="button" class="btn-info">LOGIN</button>
+        </div>
+        <div class="col-sm-8">
+        </div>
+    </div>
+-->
+</div>
+
+<div id="footer"></div>
+</body>
+
+</html>

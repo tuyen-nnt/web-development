@@ -69,8 +69,8 @@
                     <!-- BEGIN: Cấu hình tùy chỉnh - ${LIST_WEEK_DAY[i]} -->
                     <div class="container weekday">
                         <div class="row">
-                            <button type="button" class="btn btn-info weekday-btn" data-toggle="collapse" data-target="#weekday_${i}">${LIST_WEEK_DAY[i]}</button>
-                            <button type="button" class="btn btn-success weekday-add-time">&plus;</button>
+                            <button class="btn btn-info weekday-btn" data-toggle="collapse" data-target="#weekday_${i}">${LIST_WEEK_DAY[i]}</button>
+                            <button class="btn btn-success weekday-add-time">&plus;</button>
                         </div>
 
                         <div class="row collapse form-group" id="weekday_${i}">
@@ -143,8 +143,8 @@
                             <div class="col-xs-2">
                                 <input class="form-control" id="ex1" type="text">
                             </div>
-                            <div class="col-xs-4">
-                            </div>
+                            <div class="col-xs-4"> </div>
+
                              <div class="row">
                                 <div class="col-xs-6" style="float: right">
                                     <button type="button" class="btn btn-danger" style="float: right" onclick=$(this).parents().remove(".erase")>Xóa kịch bản</button>
@@ -414,11 +414,9 @@
         <h2>
             <a class="no_anchor" href="#" data-toggle="collapse" data-target="#ivr_keypress > div.container">Cấu hình phím bấm</a>
             <button type="button" class="btn btn-success">&plus;</button>
-            <!--ve sua lai -->
-
         </h2>
 
-        <div class="container collapse in"></div>
+        <div class="container collapse in"> </div>
     </div>
             <!-- BEGIN: Kich ban 1 -->
 

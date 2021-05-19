@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiwi TCMS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 50px;
+    }
+
+    </style>
+<body>
+    <button id="btn1">Button 1</button>
+    <br>
+    <div id="table"></div>
+
+    <div class="container" id="row"></div>
+
+    <script>
+        var tb = "";
+        for (i = 0; i < 3; i++) {
+            tb +=
+                "<tr>" +
+                "<th>" + "</th>" +
+                "<th>" + "</th>" +
+                "<th>" + "</th>" +
+                "</tr>"
+        }
+
+        function addRow(selector) {
+            $(selector).append("    " +
+                "<div class = \"row\" >\n" +
+                "        <div class=\"col-sm-6 bg-success\">\n" +
+                "            <button type=\"button\" class=\"btn btn-add-row\" onclick=\"addRow('#row')\">(&plus;)</button>\n" +
+                "        </div>\n" +
+                "</div>" +
+                "<br/>")
+        }
+
+        $(document).ready(function() {
+            $("#btn1").click(function(){
+                $("#table").append(tb)
+            });
+
+            // Add default row
+            addRow("#row");
+
+        });
+    </script>
+</body>
+</html>

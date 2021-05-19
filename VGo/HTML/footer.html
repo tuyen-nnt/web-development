@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Footer</title>
+    <meta charset="UTF-8">
+    <title>Trang chon xac thuc hoac Kiem tra bai viet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "icon" href =
+            "Logo2.ico"
+          type = "image/x-icon">
+    <!-- Import Boostrap css, js, font awesome here -->
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="./bootstrap4/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./bootstrap4/css/bootstrap.css">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/searchbar.css" rel="stylesheet">
+    <link href="./css/loginbox.css" rel="stylesheet">
+    <link href="./js/script.js" rel="stylesheet">
+    <script src="jquery-1.10.2.js"></script>
+
+    <script>
+        $(function(){
+            var includes = $('[data-include]');
+            jQuery.each(includes, function(){
+                var file = 'views/' + $(this).data('include') + '.html';
+                $(this).load(file);
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    <div id="footer">
+    <footer class="container-fluid text-center">
+        <p>Footer Text</p>
+    </footer>
+    </div>
+
+</body>
+</html>
